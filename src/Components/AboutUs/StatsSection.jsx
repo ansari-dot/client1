@@ -12,7 +12,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <div className="grid md:grid-cols-4 gap-8 mb-20 ">
+    <div className="grid md:grid-cols-4 gap-8 mb-20 " style={{ backgroundImage: `url('/assets/Images/background.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {stats.map((stat, index) => (
         <motion.div
           key={index}
@@ -23,7 +23,7 @@ const StatsSection = () => {
           viewport={{ once: true }} // animation runs once
         >
           {/* Icon Circle */}
-          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-700 transition-colors duration-300 transform group-hover:scale-110">
+          <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-700 transition-colors duration-300 transform group-hover:scale-110" style={{ fontFamily: "Arial Narrow, Arial, sans-serif" }}>
             <stat.icon className="w-10 h-10 text-white" />
           </div>
 

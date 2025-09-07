@@ -1,9 +1,12 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;500;700&display=swap');
 
 html, body {
   overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
+  background-image: url('../public/assets/Images/backgridun.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,15 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page {
-  background: var(--bg-950);
   color: #fff;
 }
 
 .accent { color: var(--highlight-500); }
-
-.mesh {
-  background:
-    radial-gradient(1200px 600px at 80% 40%, var(--red-500), transparent),
-    linear-gradient(135deg, var(--red-900), var(--red-600) 40%, transparent 60%),
-    linear-gradient(180deg, var(--bg-900), var(--bg-950));
-}

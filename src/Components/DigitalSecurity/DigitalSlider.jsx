@@ -45,7 +45,7 @@ const DigitalSlider = () => {
         </div>
 
         {/* Overlay Text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-black/40 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Digital Security Services
           </h1>

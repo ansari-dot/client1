@@ -174,51 +174,53 @@ const DigitalServices = () => {
 
     return (
       <motion.div
-        className="relative w-full h-80 cursor-pointer"
+        className="relative w-full h-48 cursor-pointer"
         onMouseEnter={() => setIsFlipped(true)}
         onMouseLeave={() => setIsFlipped(false)}
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.2 }}
       >
         <motion.div
           className="absolute inset-0 w-full h-full"
           style={{ transformStyle: 'preserve-3d' }}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
         >
-          {/* Front of card */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
-            <div className="mb-4 text-4xl">{service.icon}</div>
-            <h3 className="text-xl font-bold text-center mb-2">{service.title}</h3>
-            <p className="text-sm text-center opacity-90">{service.description}</p>
-            <div className="mt-4 text-xs opacity-75">Hover to see details</div>
+          {/* Front: Image only */}
+          <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden">
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          {/* Back of card */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-orange-500 via-red-500 to-amber-600 rounded-xl p-6 shadow-lg" style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}>
-            <h4 className="text-lg font-bold text-white mb-3">{service.title}</h4>
-            <p className="text-sm text-orange-100 mb-4">{service.details}</p>
-            <div className="mb-4">
-              <h5 className="text-sm font-semibold text-white mb-2">Key Benefits:</h5>
-              <ul className="text-xs text-orange-100 space-y-1">
-                {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <span className="w-1 h-1 bg-amber-300 rounded-full mr-2"></span>
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
+          {/* Back: simplified details */}
+          <div
+            className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-lg p-3 shadow-md bg-gradient-to-br from-orange-500 to-amber-600 border border-orange-400/50 flex flex-col"
+            style={{ transform: 'rotateY(180deg)' }}
+          >
+            <div className="text-center mb-1">
+              <div className="inline-block p-1.5 rounded bg-white/20">
+                <div className="w-5 h-5">{service.icon}</div>
+              </div>
+              <h3 className="text-sm font-bold text-white mt-1 font-['Roboto_Condensed',sans-serif]">{service.title}</h3>
             </div>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedService(service);
-                setShowApplyModal(true);
-              }}
-              className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors text-sm font-semibold"
-            >
-              How to Apply
-            </button>
+            <p className="text-orange-100 text-xs text-center mb-1 font-['Roboto_Condensed',sans-serif]">
+              {service.description.substring(0, 45)}...
+            </p>
+            <div className="mt-auto flex justify-center">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedService(service);
+                  setShowApplyModal(true);
+                }}
+                className="bg-amber-500 text-white py-1 px-2 rounded text-xs font-semibold hover:bg-amber-600 transition font-['Roboto_Condensed',sans-serif]"
+              >
+                Apply
+              </button>
+            </div>
           </div>
         </motion.div>
       </motion.div>
@@ -229,63 +231,28 @@ const DigitalServices = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 font-['Roboto_Condensed',sans-serif]">
             Digital Security Services
           </h1>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Enterprise-grade cybersecurity solutions designed to protect your digital infrastructure with cutting-edge technology and expert precision
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto font-['Roboto_Condensed',sans-serif]">
+            Enterprise-grade cybersecurity solutions designed to protect your digital infrastructure
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {digitalServices.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative h-64 cursor-pointer group [perspective:1000px]"
             >
-              <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                {/* Front Side (Image only) */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Back Side (simplified) */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-orange-500 to-amber-600 backdrop-blur-xl border border-orange-400/50 rounded-xl shadow-lg p-4 flex flex-col">
-                  <div className="text-center mb-2">
-                    <div className="inline-block p-2 rounded-lg bg-white/20">
-                      {service.icon}
-                    </div>
-                    <h3 className="text-base font-bold text-white mt-1">{service.title}</h3>
-                  </div>
-                  <p className="text-orange-100 text-xs text-center mb-2">
-                    {service.description.substring(0, 60)}...
-                  </p>
-                  <div className="mt-auto">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedService(service);
-                        setShowApplyModal(true);
-                      }}
-                      className="w-full bg-amber-500 text-white py-1.5 px-2 rounded text-xs font-semibold hover:bg-amber-600 transition"
-                    >
-                      Apply
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <ServiceCard service={service} />
             </motion.div>
           ))}
         </div>

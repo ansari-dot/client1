@@ -22,7 +22,7 @@ export default function TimelineSection() {
   }
 
   return (
-    <div className="bg-white rounded-2xl p-10 shadow-xl mb-20">
+    <div className="bg-white rounded-2xl p-10 shadow-xl mb-20" style={{ backgroundImage: `url('/assets/Images/choose.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="flex justify-center items-center align-items-center flex-row gap-2"> 
              <FaFingerprint className="text-[#15487d] text-lg mb-16 gap-2" />
       <h2 className="text-2xl font-bold text-center text-gray-900 mb-16">Our Journey</h2>

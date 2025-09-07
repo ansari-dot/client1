@@ -7,7 +7,6 @@ import Service from "./Components/Sections/Service";
 import TestCard from "./Components/TestCard";
 import Footer from "./Components/Footer";
 import AboutHeader from "./Components/AboutUs/AboutHeader";
-import NewsTickers from "./Components/AboutUs/NewsTickers";   // about ticker
 import ServiceSlider from "./Components/Services/ServiceSlider";
 import PhyscialSlider from "./Components/PhysicalSecurity/PhyscialSlider";
 import DigitalSlider from "./Components/DigitalSecurity/DigitalSlider";
@@ -22,9 +21,7 @@ import CareerPage from "./Components/Career/Careerpage";
 function TickerSwitcher() {
   const location = useLocation();
 
-  if (location.pathname === "/about") {
-    return <NewsTickers />;
-  }
+  
 
   // default: home ticker
   return <NewsTicker />;
@@ -68,10 +65,10 @@ function App() {
         <Route
           path='/services'
           element ={
-            <>
+            <div className="container mx-auto overflow-hidden flex justify-center">
               <ServiceSlider />
               <Footer />
-            </>
+            </div>
           }
        />
        <Route

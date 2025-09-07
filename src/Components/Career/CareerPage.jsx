@@ -6,7 +6,7 @@ const CareerPage = () => {
   return (
     <>
       {/* Top Fingerprint Banner */}
-      <div className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[300px] flex items-center justify-center bg-gray-400 overflow-hidden">
+      <div className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[500px] flex items-center justify-center bg-gray-400 overflow-hidden mt-10">
         {/* Fingerprint Icon with infinite animation */}
         <motion.div
           animate={{ y: [0, -13, 0] }}
@@ -28,7 +28,7 @@ const CareerPage = () => {
 
       {/* Contact Section */}
       <motion.div
-        className="w-full bg-white py-24 px-6 md:px-16"
+        className="w-full bg-white py-24 px-6 md:px-16" style={{ backgroundImage: `url('/assets/Images/review.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeOut" }}

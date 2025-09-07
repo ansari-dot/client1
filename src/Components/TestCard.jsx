@@ -43,7 +43,7 @@ export default function TestCard() {
   };
 
   return (
-    <div className="bg-gray-300 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-12 py-10 relative">
+    <div className="py-12 px-4" style={{ backgroundImage: `url('/assets/Images/review.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
       {/* Header */}
       <header className="text-center mb-10 space-y-3">
@@ -58,13 +58,13 @@ export default function TestCard() {
         </motion.span>
 
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mt-2 leading-snug"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mt-2 leading-snug"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+          transition={{ duration: 0.5 }}
         >
-          LOVES FROM SPECIAL CLIENTS
+          Client Testimonials
         </motion.h1>
       </header>
 
@@ -76,32 +76,25 @@ export default function TestCard() {
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
       >
-        <div className="card-ticket">
-          <div className="content-ticket grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="bg-white rounded-xl shadow-md p-6 md:p-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             
             {/* Left Text */}
-            <div className="flex flex-col space-y-4 text-center md:text-left">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
-                What Our Clients Are Saying
-              </h2>
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+            <div className="flex flex-col space-y-3">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 "{current.quote}"
               </p>
-              <div className="flex flex-col sm:flex-row items-center sm:items-start md:items-center sm:space-x-4 space-y-3 sm:space-y-0 pt-2">
-                <motion.img
+              <div className="flex items-center space-x-3 pt-1">
+                <img
                   src={current.avatar}
                   alt={current.name}
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover shadow"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 120, duration: 0.6 }}
-                  viewport={{ once: true }}
+                  className="w-12 h-12 rounded-full object-cover shadow-sm"
                 />
-                <div className="text-center sm:text-left">
-                  <p className="font-semibold text-gray-900 text-sm sm:text-base">
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm">
                     {current.name}
                   </p>
-                  <p className="text-gray-500 text-xs sm:text-sm">
+                  <p className="text-gray-500 text-xs">
                     {current.title}
                   </p>
                 </div>
@@ -109,15 +102,13 @@ export default function TestCard() {
             </div>
 
             {/* Right Image */}
-            <motion.div className="w-full h-[200px] sm:h-[280px] md:h-[350px] rounded-2xl overflow-hidden shadow-lg">
-              <motion.img
+            <div className="w-full h-48 md:h-56 rounded-lg overflow-hidden shadow-sm">
+              <img
                 src={current.image}
                 alt="Client"
                 className="w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.6 }}
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </motion.div>
