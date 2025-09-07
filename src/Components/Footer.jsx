@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { FaPhoneAlt, FaEnvelope, FaGlobe, FaLinkedin, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
+  const location = useLocation();
+  const isDigital = location.pathname === "/digital-security";
   const socialLinks =  [
   { name: "LinkedIn", href: "#", icon: <FaLinkedin />, color: "#0A66C2" },
   { name: "Twitter", href: "#", icon: <FaTwitter />, color: "#1DA1F2" },
@@ -25,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#15487d] text-gray-300 font-sans ">
+    <footer className={`text-gray-300 font-sans bg-[#15487d]`}>
       
       {/* Top Social Bar */}
       <section className=" px-6  flex flex-col md:flex-row items-center justify-end">

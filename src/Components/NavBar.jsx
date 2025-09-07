@@ -13,7 +13,7 @@
 
 
 //       {/* Navbar */}
-//       <nav className="top-0 bg-white shadow-md flex items-center justify-between px-6 py-3 z-40">
+//       <nav className="top-0 bg-white shadow-md flex items-ceginter justify-between px-6 py-3 z-40">
 //         {/* Logo */}
 //         <div className="flex items-center">
 //           <a href="#home">
@@ -150,7 +150,7 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ✅ If we’re on digital-security route → brown theme
+  // ✅ Digital route flag (used only for text color contrast)
   const isDigital = location.pathname === "/digital-security";
 
   return (
@@ -179,7 +179,7 @@ const NavBar = () => {
                   <button
                     className={`relative py-3 hover:after:w-full !no-underline 
                     after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300
-                    ${isScrolled ? 'text-gray-800 after:bg-gray-800' : 'text-white after:bg-white'}`}
+                    ${(isScrolled || isDigital) ? 'text-gray-800 after:bg-gray-800' : 'text-white after:bg-white'}`}
                     onMouseEnter={() => setServicesDropdown(true)}
                     onMouseLeave={() => setServicesDropdown(false)}
                   >
@@ -211,7 +211,7 @@ const NavBar = () => {
                   to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   className={`relative py-3 hover:after:w-full !no-underline 
                   after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300
-                  ${isScrolled ? 'text-gray-800 after:bg-gray-800' : 'text-white after:bg-white'}`}
+                  ${(isScrolled || isDigital) ? 'text-gray-800 after:bg-gray-800' : 'text-white after:bg-white'}`}
                 >
                   {item}
                 </Link>
@@ -224,15 +224,14 @@ const NavBar = () => {
         <button
           onClick={() => setShowVideo(true)}
           className={`hidden md:block absolute right-6 px-6 py-2.5 font-medium rounded-full transition-all duration-300 
-           ${isDigital ? "bg-[#6B4226] text-white hover:bg-[#4E2D1A]" : 
-              isScrolled ? "bg-[#15487d] text-white hover:bg-[#0f3a63]" : "bg-white text-[#15487d] hover:bg-gray-100"}`}
+           ${isScrolled ? "bg-[#15487d] text-white hover:bg-[#0f3a63]" : "bg-white text-[#15487d] hover:bg-gray-100"}`}
         >
           Switch to Digital Security
         </button>
 
         {/* Hamburger for Mobile - positioned absolutely to the right */}
         <button
-          className={`md:hidden absolute right-6 text-2xl transition-colors ${isScrolled ? 'text-gray-700' : 'text-white'}`}
+          className={`md:hidden absolute right-6 text-2xl transition-colors ${(isScrolled || isDigital) ? 'text-gray-700' : 'text-white'}`}
           onClick={() => setMenuOpen(true)}
         >
           <FaBars />
@@ -297,7 +296,7 @@ const NavBar = () => {
               setMenuOpen(false);
             }}
             className={`w-full text-white px-6 py-2 rounded-full transition-all duration-300 
-              ${isDigital ? "bg-[#6B4226] hover:bg-[#4E2D1A]" : "bg-[#15487d] hover:bg-blue-900"}`}
+              bg-[#15487d] hover:bg-blue-900`}
           >
             Switch to Digital Security
           </button>
@@ -318,7 +317,7 @@ const NavBar = () => {
           <button
             onClick={() => setShowVideo(false)}
             className={`absolute top-4 right-4 text-white px-4 py-2 rounded-full transition 
-              ${isDigital ? "bg-red-900" : "bg-[#15487d] hover:bg-red-900"}`}
+              bg-[#15487d] hover:bg-red-900`}
           >
             Skip to Side
           </button>

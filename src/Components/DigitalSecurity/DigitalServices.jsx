@@ -187,7 +187,7 @@ const DigitalServices = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Front of card */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
             <div className="mb-4 text-4xl">{service.icon}</div>
             <h3 className="text-xl font-bold text-center mb-2">{service.title}</h3>
             <p className="text-sm text-center opacity-90">{service.description}</p>
@@ -195,15 +195,15 @@ const DigitalServices = () => {
           </div>
 
           {/* Back of card */}
-          <div className="absolute inset-0 w-full h-full bg-white rounded-xl p-6 shadow-lg" style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}>
-            <h4 className="text-lg font-bold text-gray-800 mb-3">{service.title}</h4>
-            <p className="text-sm text-gray-600 mb-4">{service.details}</p>
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-orange-500 via-red-500 to-amber-600 rounded-xl p-6 shadow-lg" style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}>
+            <h4 className="text-lg font-bold text-white mb-3">{service.title}</h4>
+            <p className="text-sm text-orange-100 mb-4">{service.details}</p>
             <div className="mb-4">
-              <h5 className="text-sm font-semibold text-gray-800 mb-2">Key Benefits:</h5>
-              <ul className="text-xs text-gray-600 space-y-1">
+              <h5 className="text-sm font-semibold text-white mb-2">Key Benefits:</h5>
+              <ul className="text-xs text-orange-100 space-y-1">
                 {service.benefits.map((benefit, idx) => (
                   <li key={idx} className="flex items-center">
-                    <span className="w-1 h-1 bg-blue-500 rounded-full mr-2"></span>
+                    <span className="w-1 h-1 bg-amber-300 rounded-full mr-2"></span>
                     {benefit}
                   </li>
                 ))}
@@ -215,7 +215,7 @@ const DigitalServices = () => {
                 setSelectedService(service);
                 setShowApplyModal(true);
               }}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+              className="w-full bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-amber-600 transition-colors text-sm font-semibold"
             >
               How to Apply
             </button>
@@ -226,7 +226,7 @@ const DigitalServices = () => {
   };
 
   return (
-    <div className="min-h-screen page mesh py-20">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -234,26 +234,26 @@ const DigitalServices = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 accent">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
             Digital Security Services
           </h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Enterprise-grade cybersecurity solutions designed to protect your digital infrastructure with cutting-edge technology and expert precision
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {digitalServices.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative h-[450px] cursor-pointer group [perspective:1000px]"
+              className="relative h-64 cursor-pointer group [perspective:1000px]"
             >
               <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 {/* Front Side (Image only) */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title}
@@ -261,30 +261,17 @@ const DigitalServices = () => {
                   />
                 </div>
 
-                {/* Back Side (match Physical: icon + details + benefits + apply) */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-blue-900/90 to-purple-900/90 backdrop-blur-xl border border-blue-700/50 rounded-2xl shadow-2xl p-8 flex flex-col">
-                  <div className="flex items-start mb-6">
-                    <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
+                {/* Back Side (simplified) */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-orange-500 to-amber-600 backdrop-blur-xl border border-orange-400/50 rounded-xl shadow-lg p-4 flex flex-col">
+                  <div className="text-center mb-2">
+                    <div className="inline-block p-2 rounded-lg bg-white/20">
                       {service.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-white ml-4">{service.title}</h3>
+                    <h3 className="text-base font-bold text-white mt-1">{service.title}</h3>
                   </div>
-                  <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                    {service.details}
+                  <p className="text-orange-100 text-xs text-center mb-2">
+                    {service.description.substring(0, 60)}...
                   </p>
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <p className="text-white font-semibold text-sm mb-2">Key Benefits:</p>
-                      <ul className="text-sm text-gray-200 space-y-2">
-                        {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <span className="text-blue-300 mr-2 mt-1">✓</span>
-                            <span>{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
                   <div className="mt-auto">
                     <button
                       onClick={(e) => {
@@ -292,9 +279,9 @@ const DigitalServices = () => {
                         setSelectedService(service);
                         setShowApplyModal(true);
                       }}
-                      className="w-full bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:opacity-90 transition"
+                      className="w-full bg-amber-500 text-white py-1.5 px-2 rounded text-xs font-semibold hover:bg-amber-600 transition"
                     >
-                      Apply Now
+                      Apply
                     </button>
                   </div>
                 </div>
