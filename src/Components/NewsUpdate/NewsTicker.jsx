@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./NewsUpdate.css";
 
-const NewsTicker = () => {
+const NewsTicker = ({ showVideo }) => {
   const location = useLocation();
 
   // ✅ Brown if we are on digital-security route
@@ -10,10 +10,7 @@ const NewsTicker = () => {
 
   return (
     <div
-      // className={`ticker-container text-white py-2 
-      //   ${isDigital ? "bg-[#6B4226]" : "bg-[#15487d]"}`}
-
-       className="ticker-container text-white py-2 bg-[#15487d]" 
+      className={`ticker-container text-white py-2 bg-[#15487d] ${showVideo ? "hidden" : ""}`}
     >
       <div className="ticker-content">
         <span>

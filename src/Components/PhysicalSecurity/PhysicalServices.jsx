@@ -1,180 +1,320 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaShieldAlt, FaEye, FaCamera, FaLock, FaUserShield, FaExclamationTriangle, FaClipboardCheck, FaKey, FaBell, FaWalking } from 'react-icons/fa';
-
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaShieldAlt,
+  FaLock,
+  FaEye,
+  FaCloud,
+  FaUserShield,
+  FaNetworkWired,
+  FaKey,
+  FaExclamationTriangle,
+  FaClipboardCheck,
+  FaMobileAlt,
+  FaCamera,
+} from "react-icons/fa";
+import { FaWalking } from "react-icons/fa";
+import img from "../assets/bg4.png";
 const PhysicalServices = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [showApplyModal, setShowApplyModal] = useState(false);
 
-  const physicalServices = [
+  const digitalServices = [
     {
       id: 1,
-      title: "24/7 Security Guard Services",
+      title: "Cyber Threat Monitoring",
       icon: <FaShieldAlt className="w-8 h-8" />,
-      image: "/assets/Images/guardb.jpg",
-      description: "Professional security guards providing round-the-clock protection for your premises.",
-      details: "Highly trained security personnel equipped with advanced communication systems and emergency response protocols to ensure comprehensive protection.",
-      benefits: ["24/7 monitoring", "Trained professionals", "Emergency response", "Access control"],
+      image: "/assets/Images/security1.webp",
+      description:
+        "24/7 real-time monitoring of your digital infrastructure to detect and respond to cyber threats instantly.",
+      details:
+        "Advanced AI-powered threat detection with immediate response protocols, protecting against malware, ransomware, and sophisticated cyber attacks.",
+      benefits: [
+        "Real-time threat detection",
+        "Instant response protocols",
+        "AI-powered analysis",
+        "24/7 monitoring",
+      ],
       applySteps: [
-        "Schedule site assessment",
-        "Security needs analysis",
-        "Guard deployment plan",
-        "Contract agreement",
-        "Service commencement"
-      ]
+        "Contact our cybersecurity team",
+        "Schedule infrastructure assessment",
+        "Receive customized monitoring plan",
+        "Deploy monitoring agents",
+        "Begin 24/7 protection",
+      ],
     },
     {
       id: 2,
-      title: "CCTV Surveillance Systems",
-      icon: <FaCamera className="w-8 h-8" />,
-      image: "/assets/Images/1122.jpg",
-      description: "Advanced CCTV systems with remote monitoring and AI-powered analytics.",
-      details: "State-of-the-art surveillance cameras with night vision, motion detection, and cloud storage capabilities for comprehensive security coverage.",
-      benefits: ["HD recording", "Remote monitoring", "Motion alerts", "Cloud storage"],
+      title: "Endpoint Security",
+      icon: <FaLock className="w-8 h-8" />,
+      image: "/assets/Images/security.jpeg",
+      description:
+        "Comprehensive protection for all devices connected to your network including laptops, mobiles, and IoT devices.",
+      details:
+        "Multi-layered endpoint protection with advanced antivirus, firewall, and intrusion prevention systems for complete device security.",
+      benefits: [
+        "Device-level protection",
+        "Multi-platform support",
+        "Zero-day threat protection",
+        "Remote device management",
+      ],
       applySteps: [
-        "Site survey and assessment",
-        "System design proposal",
-        "Installation scheduling",
-        "System testing",
-        "Training and handover"
-      ]
+        "Device inventory assessment",
+        "Security policy configuration",
+        "Agent installation on devices",
+        "Security testing and validation",
+        "Ongoing monitoring and updates",
+      ],
     },
     {
       id: 3,
-      title: "Access Control Systems",
-      icon: <FaLock className="w-8 h-8" />,
-      image: "/assets/Images/1.jpg",
-      description: "Biometric and card-based access control systems for secure entry management.",
-      details: "Advanced access control solutions including fingerprint scanners, facial recognition, and RFID card systems with centralized management.",
-      benefits: ["Biometric authentication", "Access logs", "Remote management", "Integration capability"],
+      title: "Network Security",
+      icon: <FaNetworkWired className="w-8 h-8" />,
+      image: "/assets/Images/guardb.jpg",
+      description:
+        "Secure your network infrastructure with advanced firewalls, intrusion detection, and traffic analysis.",
+      details:
+        "Enterprise-grade network security solutions including next-gen firewalls, VPNs, and network segmentation to prevent unauthorized access.",
+      benefits: [
+        "Network traffic monitoring",
+        "Intrusion prevention",
+        "Secure remote access",
+        "Network segmentation",
+      ],
       applySteps: [
-        "Access requirements analysis",
-        "System selection",
-        "Installation planning",
-        "User registration",
-        "System activation"
-      ]
+        "Network architecture review",
+        "Security gap analysis",
+        "Firewall deployment",
+        "VPN configuration",
+        "Security testing and optimization",
+      ],
     },
     {
       id: 4,
-      title: "Mobile Patrol Services",
-      icon: <FaWalking className="w-8 h-8" />,
-      image: "/assets/Images/22.jpg",
-      description: "Scheduled and random mobile patrols to secure large areas and multiple locations.",
-      details: "Professional mobile patrol units conducting regular inspections, perimeter checks, and emergency response across multiple sites.",
-      benefits: ["Regular patrols", "Area coverage", "Emergency response", "Incident reporting"],
+      title: "Cloud Security",
+      icon: <FaCloud className="w-8 h-8" />,
+      image: "/assets/Images/tec.jpg",
+      description:
+        "Protect your cloud infrastructure and data with comprehensive cloud security solutions.",
+      details:
+        "Secure cloud migration, data encryption, access controls, and compliance management for AWS, Azure, and Google Cloud platforms.",
+      benefits: [
+        "Cloud data protection",
+        "Access control management",
+        "Compliance automation",
+        "Multi-cloud security",
+      ],
       applySteps: [
-        "Patrol area assessment",
-        "Route planning",
-        "Patrol scheduling",
-        "Service agreement",
-        "Patrol commencement"
-      ]
+        "Cloud environment assessment",
+        "Security architecture design",
+        "Access policy configuration",
+        "Data encryption implementation",
+        "Compliance validation",
+      ],
     },
     {
       id: 5,
-      title: "Executive Protection",
+      title: "Identity & Access Management",
       icon: <FaUserShield className="w-8 h-8" />,
-      image: "/assets/Images/12.jpg",
-      description: "Personal security services for high-profile individuals and corporate executives.",
-      details: "Elite protection services including close protection officers, secure transportation, and risk assessment for VIP security.",
-      benefits: ["Close protection", "Risk assessment", "Secure transport", "24/7 availability"],
+      image: "/assets/Images/1.jpg",
+      description:
+        "Control who has access to your systems and data with advanced identity and access management solutions.",
+      details:
+        "Comprehensive IAM including single sign-on, multi-factor authentication, and privileged access management for enhanced security.",
+      benefits: [
+        "Single sign-on (SSO)",
+        "Multi-factor authentication",
+        "Privileged access management",
+        "User lifecycle management",
+      ],
       applySteps: [
-        "Security risk assessment",
-        "Protection plan development",
-        "Team assignment",
-        "Route planning",
-        "Service activation"
-      ]
+        "Identity assessment",
+        "Access policy design",
+        "SSO implementation",
+        "MFA deployment",
+        "User training and onboarding",
+      ],
     },
     {
       id: 6,
-      title: "Intrusion Detection Systems",
-      icon: <FaExclamationTriangle className="w-8 h-8" />,
+      title: "Vulnerability Assessment",
+      icon: <FaEye className="w-8 h-8" />,
       image: "/assets/Images/44.jpg",
-      description: "Advanced sensors and alarms to detect unauthorized entry attempts immediately.",
-      details: "Comprehensive intrusion detection including motion sensors, door/window contacts, glass break detectors, and integrated alarm systems.",
-      benefits: ["Immediate alerts", "Multiple sensor types", "Integration capability", "False alarm reduction"],
+      description:
+        "Identify and prioritize security vulnerabilities in your systems before attackers can exploit them.",
+      details:
+        "Comprehensive vulnerability scanning and penetration testing to identify security weaknesses and provide remediation guidance.",
+      benefits: [
+        "Comprehensive scanning",
+        "Risk prioritization",
+        "Remediation guidance",
+        "Regular assessments",
+      ],
       applySteps: [
-        "Security vulnerability assessment",
-        "System design",
-        "Sensor installation",
-        "System testing",
-        "Monitoring setup"
-      ]
+        "Scope definition",
+        "Vulnerability scanning",
+        "Risk assessment report",
+        "Remediation planning",
+        "Follow-up validation",
+      ],
     },
     {
       id: 7,
-      title: "Security Consulting",
-      icon: <FaClipboardCheck className="w-8 h-8" />,
-      image: "/assets/Images/guad.jpg",
-      description: "Expert security assessments and customized protection strategies for your specific needs.",
-      details: "Comprehensive security consulting including risk assessments, security audits, and development of customized security protocols.",
-      benefits: ["Risk assessment", "Customized solutions", "Expert guidance", "Compliance support"],
+      title: "Security Key Management",
+      icon: <FaKey className="w-8 h-8" />,
+      image: "/assets/Images/cmo.jpg",
+      description:
+        "Secure management of cryptographic keys and certificates for data encryption and digital signatures.",
+      details:
+        "Enterprise-grade key management solutions for encryption keys, SSL certificates, and API keys with automated rotation and lifecycle management.",
+      benefits: [
+        "Automated key rotation",
+        "Certificate lifecycle management",
+        "Secure key storage",
+        "Compliance reporting",
+      ],
       applySteps: [
-        "Initial consultation",
-        "Security assessment",
-        "Solution proposal",
-        "Implementation planning",
-        "Ongoing support"
-      ]
+        "Key inventory assessment",
+        "Management platform setup",
+        "Policy configuration",
+        "Integration with systems",
+        "Monitoring and maintenance",
+      ],
     },
     {
       id: 8,
-      title: "Key Management Systems",
-      icon: <FaKey className="w-8 h-8" />,
-      image: "/assets/Images/cmo.jpg",
-      description: "Secure key storage, tracking, and management systems for facility access.",
-      details: "Advanced key management solutions including electronic key cabinets, key tracking systems, and access logging for complete key security.",
-      benefits: ["Secure key storage", "Access tracking", "Audit trails", "Automated management"],
+      title: "Incident Response",
+      icon: <FaExclamationTriangle className="w-8 h-8" />,
+      image: "/assets/Images/22.jpg",
+      description:
+        "Rapid response to security incidents with expert incident handling and recovery services.",
+      details:
+        "24/7 incident response team ready to handle security breaches, malware infections, and other cybersecurity emergencies with rapid containment and recovery.",
+      benefits: [
+        "24/7 response team",
+        "Rapid containment",
+        "Forensic analysis",
+        "Recovery assistance",
+      ],
       applySteps: [
-        "Key inventory assessment",
-        "System selection",
-        "Installation and setup",
-        "User training",
-        "System activation"
-      ]
+        "Incident response plan review",
+        "Team contact establishment",
+        "Escalation procedures",
+        "Response activation",
+        "Post-incident analysis",
+      ],
     },
     {
       id: 9,
-      title: "Alarm Monitoring Services",
-      icon: <FaBell className="w-8 h-8" />,
-      image: "/assets/Images/tec.jpg",
-      description: "24/7 professional monitoring of security alarms with immediate response dispatch.",
-      details: "Central monitoring station services with trained operators monitoring your security systems and dispatching emergency response when needed.",
-      benefits: ["24/7 monitoring", "Trained operators", "Emergency dispatch", "Real-time alerts"],
+      title: "Compliance Management",
+      icon: <FaClipboardCheck className="w-8 h-8" />,
+      image: "/assets/Images/b1.jpg",
+      description:
+        "Ensure compliance with industry standards and regulations including GDPR, HIPAA, and PCI-DSS.",
+      details:
+        "Comprehensive compliance management services including gap analysis, policy development, and ongoing monitoring to meet regulatory requirements.",
+      benefits: [
+        "Regulatory compliance",
+        "Gap analysis",
+        "Policy development",
+        "Ongoing monitoring",
+      ],
       applySteps: [
-        "System compatibility check",
-        "Monitoring agreement",
-        "System integration",
-        "Testing and verification",
-        "Monitoring activation"
-      ]
+        "Compliance requirements review",
+        "Gap analysis",
+        "Remediation plan",
+        "Policy implementation",
+        "Continuous monitoring",
+      ],
     },
     {
       id: 10,
       title: "Security Risk Assessment",
       icon: <FaEye className="w-8 h-8" />,
       image: "/assets/Images/security.jpeg",
-      description: "Comprehensive evaluation of security risks and vulnerabilities in your environment.",
-      details: "Professional security assessments including physical security audits, threat analysis, and development of risk mitigation strategies.",
-      benefits: ["Comprehensive analysis", "Risk identification", "Mitigation strategies", "Regular updates"],
+      description:
+        "Comprehensive evaluation of security risks and vulnerabilities in your environment.",
+      details:
+        "Professional security assessments including physical security audits, threat analysis, and development of risk mitigation strategies.",
+      benefits: [
+        "Comprehensive analysis",
+        "Risk identification",
+        "Mitigation strategies",
+        "Regular updates",
+      ],
       applySteps: [
         "Site survey request",
         "Assessment scheduling",
         "Detailed evaluation",
         "Report delivery",
-        "Implementation support"
-      ]
-    }
+        "Implementation support",
+      ],
+    },
+    {
+      id: 11,
+      title: "Drone Surveillance",
+      icon: <FaCamera className="w-8 h-8" />,
+      image: "/assets/Images/drone.jpg",
+      description:
+        "Aerial surveillance for large perimeters and difficult-to-reach areas.",
+      details:
+        "Utilizing advanced drones equipped with high-resolution cameras and thermal imaging for comprehensive site monitoring and rapid incident response.",
+      benefits: [
+        "Wide area coverage",
+        "Rapid deployment",
+        "Thermal imaging",
+        "Cost-effective monitoring",
+      ],
+      applySteps: [
+        "Consultation and site assessment",
+        "Flight plan development",
+        "Regulatory compliance check",
+        "Deployment and monitoring",
+        "Data analysis and reporting",
+      ],
+    },
+    {
+      id: 12,
+      title: "K9 Security Services",
+      icon: <FaWalking className="w-8 h-8" />,
+      image: "/assets/Images/k9.jpg",
+      description:
+        "Highly trained K9 units for enhanced detection and deterrence.",
+      details:
+        "Specialized K9 teams providing expert detection of contraband, explosives, and intruders, as well as crowd control and executive protection.",
+      benefits: [
+        "Enhanced detection",
+        "Strong deterrence",
+        "Crowd control",
+        "Specialized training",
+      ],
+      applySteps: [
+        "Needs assessment and K9 suitability",
+        "Deployment strategy",
+        "Handler and K9 team assignment",
+        "On-site integration",
+        "Ongoing training and support",
+      ],
+    },
   ];
 
   const ServiceCard = ({ service }) => {
+    const [isFlipped, setIsFlipped] = useState(false);
+
     return (
-      <div className="relative h-[320px] cursor-pointer group [perspective:1000px]">
-        <div className="relative w-full h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-          {/* Front Side (Image only) */}
-          <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-xl overflow-hidden">
+      <motion.div
+        className="relative w-full h-48 cursor-pointer"
+        onMouseEnter={() => setIsFlipped(true)}
+        onMouseLeave={() => setIsFlipped(false)}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.2 }}>
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          style={{ transformStyle: "preserve-3d" }}
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ duration: 0.4 }}>
+          {/* Front: Image only */}
+          <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-lg overflow-hidden">
             <img
               src={service.image}
               alt={service.title}
@@ -182,48 +322,35 @@ const PhysicalServices = () => {
             />
           </div>
 
-          {/* Back Side (match Digital) */}
-          <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-blue-900/90 to-purple-900/90 backdrop-blur-sm border border-blue-700/50 rounded-xl shadow-xl p-4 flex flex-col">
-            <div className="flex items-start mb-3">
-              <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm">
-                <div className="w-6 h-6">{service.icon}</div>
+          {/* Back: simplified details */}
+          <div
+            className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-lg p-3 shadow-md bg-gradient-to-br from-orange-500 to-amber-600 border border-orange-400/50 flex flex-col"
+            style={{ transform: "rotateY(180deg)" }}>
+            <div className="text-center mb-1">
+              <div className="inline-block p-1.5 rounded bg-white/20">
+                <div className="w-5 h-5">{service.icon}</div>
               </div>
-              <h3 className="text-base font-bold text-white ml-2 font-['Roboto_Condensed',sans-serif]">{service.title}</h3>
+              <h3 className="text-sm font-bold text-white mt-1 font-['Roboto_Condensed',sans-serif]">
+                {service.title}
+              </h3>
             </div>
-
-            <p className="text-blue-100 text-xs leading-snug mb-3 font-['Roboto_Condensed',sans-serif]">
-              {service.details.substring(0, 80)}...
+            <p className="text-orange-100 text-xs text-center mb-1 font-['Roboto_Condensed',sans-serif]">
+              {service.description.substring(0, 45)}...
             </p>
-
-            <div className="space-y-2 mb-3">
-              <div>
-                <p className="text-white font-semibold text-xs mb-1 font-['Roboto_Condensed',sans-serif]">Key Benefits:</p>
-                <ul className="text-xs text-gray-200 space-y-1">
-                  {service.benefits.slice(0, 3).map((benefit, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <span className="text-blue-300 mr-1 mt-0.5 text-xs">✓</span>
-                      <span className="font-['Roboto_Condensed',sans-serif]">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-auto">
+            <div className="mt-auto flex justify-center">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedService(service);
                   setShowApplyModal(true);
                 }}
-                className="w-full bg-primary text-white px-3 py-1.5 rounded-md font-medium text-xs hover:opacity-90 transition font-['Roboto_Condensed',sans-serif]"
-              >
-                Apply Now
+                className="bg-amber-500 text-white py-1 px-2 rounded text-xs font-semibold hover:bg-amber-600 transition font-['Roboto_Condensed',sans-serif]">
+                Apply
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     );
   };
 
@@ -234,24 +361,23 @@ const PhysicalServices = () => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
-        >
+          className="text-center mb-8">
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 font-['Roboto_Condensed',sans-serif]">
-            Physical Security Services
+            Digital Security Services
           </h1>
-          <p className="text-sm text-blue-100/80 max-w-2xl mx-auto font-['Roboto_Condensed',sans-serif]">
-            Enterprise-grade physical security solutions designed to protect your sites with expert precision
+          <p className="text-sm text-gray-300 max-w-2xl mx-auto font-['Roboto_Condensed',sans-serif]">
+            Enterprise-grade cybersecurity solutions designed to protect your
+            digital infrastructure
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {physicalServices.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {digitalServices.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
+              transition={{ duration: 0.6, delay: index * 0.1 }}>
               <ServiceCard service={service} />
             </motion.div>
           ))}
@@ -265,28 +391,29 @@ const PhysicalServices = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-          onClick={() => setShowApplyModal(false)}
-        >
+          onClick={() => setShowApplyModal(false)}>
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             className="bg-white rounded-xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
+            onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">How to Apply for {selectedService.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                How to Apply for {selectedService.title}
+              </h2>
               <button
                 onClick={() => setShowApplyModal(false)}
-                className="text-gray-400 hover:text-gray-600 text-2xl"
-              >
+                className="text-gray-400 hover:text-gray-600 text-2xl">
                 ×
               </button>
             </div>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Application Process</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  Application Process
+                </h3>
                 <div className="space-y-3">
                   {selectedService.applySteps.map((step, index) => (
                     <motion.div
@@ -294,9 +421,8 @@ const PhysicalServices = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex items-start space-x-3"
-                    >
-                      <div className="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
                         {index + 1}
                       </div>
                       <div>
@@ -307,10 +433,15 @@ const PhysicalServices = () => {
                 </div>
               </div>
 
-              <div className="bg-amber-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-amber-800 mb-2">Ready to secure your premises?</h4>
-                <p className="text-amber-700 mb-3">Contact our security team today to discuss your protection needs.</p>
-                <button className="bg-amber-600 text-white px-6 py-2 rounded-lg hover:bg-amber-700 transition-colors">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-800 mb-2">
+                  Ready to get started?
+                </h4>
+                <p className="text-blue-700 mb-3">
+                  Contact our team today to begin securing your digital
+                  infrastructure.
+                </p>
+                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                   Contact Us Now
                 </button>
               </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import "../Components/Sass/TestCard.scss"; 
 import ScrollToTop from "./ScrollToTop";
 import { BiSolidLeftArrowAlt, BiSolidRightArrowAlt } from "react-icons/bi";
-
+import img from './assets/bg2.jpg'
 export default function TestCard() {
   const testimonials = [
     {
@@ -43,7 +43,7 @@ export default function TestCard() {
   };
 
   return (
-    <div className="py-12 px-4" style={{ backgroundImage: `url('/assets/Images/review.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="py-12 px-4" style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       
       {/* Header */}
       <header className="text-center mb-10 space-y-3">

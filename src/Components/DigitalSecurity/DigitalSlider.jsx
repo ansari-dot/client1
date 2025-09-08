@@ -1,105 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import DigitalServices from "./DigitalServices";
+import img1 from "../assets/bg3.png"; // ✅ Background image
 
 const DigitalSlider = () => {
-  const slides = [
-    { id: 1, image: "../assets/Images/guardb.jpg" },
-    { id: 2, image: "../assets/Images/tec.jpg" },
-    { id: 3, image: "../assets/Images/cmo.jpg" },
-    { id: 4, image: "../assets/Images/1122.jpg" },
-    { id: 5, image: "../assets/Images/guardb.jpg" },
-    { id: 6, image: "../assets/Images/tec.jpg" },
-  ];
-
-  const [current, setCurrent] = useState(0);
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
   return (
     <>
-      {/* Hero Slider */}
-      <div className="relative w-full overflow-hidden rounded-lg">
-        <div
-          className="flex transition-transform duration-700 ease-in-out"
-          style={{ transform: `translateX(-${current * 100}%)` }}
-        >
-          {slides.map((slide) => (
-            <div
-              key={slide.id}
-              className="flex-shrink-0 w-full h-[90vh] flex justify-center items-center"
-            >
-              <img
-                src={slide.image}
-                alt={`Slide ${slide.id}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+      {/* Hero Section with Background */}
+      <div
+        className="relative w-full h-[90vh] bg-cover bg-center flex items-center justify-center text-center text-white"
+        style={{ backgroundImage: `url(${img1})` }}>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
 
-        {/* Overlay Text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-white">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+        {/* Content */}
+        <div className="relative z-10 px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl md:text-5xl font-bold mb-4">
             Digital Security Services
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl">
-            Advanced cybersecurity protecting your digital presence.
-          </p>
-        </div>
+          </motion.h1>
 
-        {/* Navigation Buttons */}
-        <button
-          onClick={prevSlide}
-          className="absolute inset-y-0 left-0 flex items-center justify-center w-12 text-white hover:bg-white/20 rounded-s-lg z-10"
-        >
-          <svg
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            className="text-lg md:text-xl max-w-3xl mx-auto">
+            Advanced cybersecurity solutions protecting your digital presence,
+            data, and infrastructure.
+          </motion.p>
 
-        <button
-          onClick={nextSlide}
-          className="absolute inset-y-0 right-0 flex items-center justify-center w-12 text-white hover:bg-white/20 rounded-e-lg z-10"
-        >
-          <svg
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-
-        {/* Dots Pagination */}
-        <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`w-3 h-3 rounded-full border transition ${
-                current === index
-                  ? "bg-[#15487d] border-blue-700"
-                  : "border-gray-300 bg-white/50"
-              }`}
-            />
-          ))}
+          <motion.a
+            href="#services"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            whileHover={{
+              scale: 1.08,
+              boxShadow: "0px 8px 20px rgba(255,255,255,0.4)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 inline-block bg-white text-blue-900 font-semibold px-8 py-3 rounded-full shadow-md transition-colors duration-300 hover:bg-blue-700 hover:text-black !no-underline">
+            Explore Our Services
+          </motion.a>
         </div>
       </div>
 

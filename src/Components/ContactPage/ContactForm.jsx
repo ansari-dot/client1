@@ -1,7 +1,8 @@
 import React from "react";
 import { FaFingerprint } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import img1 from '../assets/bg1.jpg';
+import img2 from '../assets/bg2.jpg';
 const ContactForm = () => {
   return (
     <>
@@ -30,7 +31,7 @@ const ContactForm = () => {
       <motion.div
         className="w-full py-24 px-6 md:px-16"
         style={{
-          backgroundImage: `url(../assets/Images/back.png)`,
+          backgroundImage: `url(${img2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

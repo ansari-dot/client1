@@ -5,9 +5,10 @@ import { FaFingerprint, FaCheckCircle } from "react-icons/fa";
 import bigImg from "/assets/Images/girls.jpg";
 import smallImg1 from "/assets/Images/12.jpg";
 import smallImg2 from "/assets/Images/13.png";
+import img from './assets/bg1.jpg'
 const WhyChooseUs = () => {
   return (
-    <section className="py-12 md:py-16 bg-white" style={{ backgroundImage: `url('/assets/Images/choose.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <section className="py-12 md:py-16 bg-white" style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center px-6 md:px-12">
         
         {/* Left side - 3 Images */}

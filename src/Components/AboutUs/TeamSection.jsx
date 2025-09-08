@@ -1,7 +1,9 @@
-import React, { useState } from "react"
-import { FaLinkedin, FaTelegramPlane, FaFacebook } from "react-icons/fa"
-import { motion } from "framer-motion"
+import React, { useState } from "react";
+import { FaLinkedin, FaTelegramPlane, FaFacebook } from "react-icons/fa";
+import { motion } from "framer-motion";
+import img1 from "../assets/bg3.png"; // background image
 
+// Team Members
 const teamMembers = [
   {
     id: 1,
@@ -31,30 +33,45 @@ const teamMembers = [
     image: "../assets/Images/13.png",
     social: { linkedin: "#", telegram: "#", facebook: "#" },
   },
-]
+];
 
-// Social icon styles
+// Social icon colors
 const socialColors = {
   linkedin: "bg-blue-700 hover:bg-blue-800",
   telegram: "bg-blue-400 hover:bg-blue-500",
   facebook: "bg-blue-600 hover:bg-blue-700",
-}
+};
 
 export default function TeamSection() {
-  const [hoveredMember, setHoveredMember] = useState(null)
+  const [hoveredMember, setHoveredMember] = useState(null);
 
   const cardVariant = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
-      <div className="max-w-7xl mx-auto">
+    <section
+      className="py-20 px-4 relative"
+      style={{
+        backgroundImage: `url(${img1})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <h3 className="text-lg md:text-xl font-semibold text-blue-950 mb-2">Our Team</h3>
-          <h2 className="text-lg md:text-3xl font-bold text-black mb-4 text-balance">
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-2 drop-shadow-lg tracking-wide">
+            Our Team
+          </h3>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl leading-snug">
             Meet With Our Expert Team
           </h2>
         </div>
@@ -71,11 +88,9 @@ export default function TeamSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.2 }}
-            >
+              transition={{ delay: index * 0.2 }}>
               {/* Card */}
               <div className="overflow-hidden bg-white/95 backdrop-blur-sm border-0 shadow-xl rounded-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
-                
                 {/* Image & Overlay */}
                 <div className="relative rounded-t-lg">
                   <div className="aspect-[4/5] overflow-hidden rounded-t-lg">
@@ -89,25 +104,23 @@ export default function TeamSection() {
                   {/* Social Icons Overlay */}
                   <div
                     className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-300 rounded-t-lg ${
-                      hoveredMember === member.id ? "opacity-100 bg-[#15487d]" : "opacity-0"
-                    }`}
-                  >
+                      hoveredMember === member.id
+                        ? "opacity-100 bg-[#15487d]/80"
+                        : "opacity-0"
+                    }`}>
                     <a
                       href={member.social.linkedin}
-                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.linkedin}`}
-                    >
+                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.linkedin}`}>
                       <FaLinkedin className="w-6 h-6 text-white" />
                     </a>
                     <a
                       href={member.social.telegram}
-                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.telegram}`}
-                    >
+                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.telegram}`}>
                       <FaTelegramPlane className="w-6 h-6 text-white" />
                     </a>
                     <a
                       href={member.social.facebook}
-                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.facebook}`}
-                    >
+                      className={`p-3 rounded-full transition-all duration-200 hover:scale-110 ${socialColors.facebook}`}>
                       <FaFacebook className="w-6 h-6 text-white" />
                     </a>
                   </div>
@@ -115,8 +128,12 @@ export default function TeamSection() {
 
                 {/* Name & Role */}
                 <div className="p-6 text-center rounded-b-lg">
-                  <h3 className="text-xl font-bold  mb-2 text-[#15487d]">{member.name}</h3>
-                  <p className=" text-sm font-medium text-[#15487d]">{member.role}</p>
+                  <h3 className="text-xl font-bold mb-2 text-[#15487d]">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm font-medium text-[#15487d]">
+                    {member.role}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -124,5 +141,5 @@ export default function TeamSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

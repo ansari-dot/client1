@@ -1,10 +1,25 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Shield, Award, Users } from "lucide-react";
+import background from "../assets/bg2.jpg"; // ✅ import background image
 
 export default function CardAbout() {
   return (
-    <section className="w-full bg-[#15487d] py-20" style={{ fontFamily: "Arial Narrow" }}>
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+    <section
+      className="relative w-full py-20"
+      style={{
+        fontFamily: "Arial Narrow",
+        backgroundImage: `url(${background})`, // ✅ background from import
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 z-10">
         {/* Card 1 */}
         <motion.div
           initial={{ opacity: 0, y: 80, rotateY: -20 }}
@@ -17,8 +32,16 @@ export default function CardAbout() {
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
             <Shield className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4"  style={{ fontFamily: "Arial Narrow, Arial, sans-serif" }}>COMPANY</h3>
-          <p className="text-gray-600 leading-relaxed"  style={{ fontFamily: "Arial Narrow, Arial, sans-serif" }}>
+          <h3
+            className="text-2xl font-bold text-gray-900 mb-4"
+            style={{ fontFamily: "Arial Narrow, Arial, sans-serif" }}
+          >
+            COMPANY
+          </h3>
+          <p
+            className="text-gray-600 leading-relaxed"
+            style={{ fontFamily: "Arial Narrow, Arial, sans-serif" }}
+          >
             Trusted security solutions from a comprehensive security business.
             Our experienced team caters to industrial, commercial, and armed
             security services. We are dedicated to safeguarding your business

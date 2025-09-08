@@ -1,9 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import DigitalServices from "./Components/Sections/DigitalServicesComponent";
+import DigitalHeroSection from "./Components/DigitalHeroSection";
 import NavBar from "./Components/NavBar";
 import NewsTicker from "./Components/NewsUpdate/NewsTicker";   // home ticker
-import HeroSection from "./Components/HeroSection";
+import HeroSection from "./Components/PhysicalSectionHeroSection";
 import WhyChooseUs from "./Components/WhyChooseUs";
-import Service from "./Components/Sections/Service";
+import PhysicalService from "./Components/Sections/PhysicalServiceComponent";
 import TestCard from "./Components/TestCard";
 import Footer from "./Components/Footer";
 import AboutHeader from "./Components/AboutUs/AboutHeader";
@@ -18,20 +21,26 @@ import CareerPage from "./Components/Career/Careerpage";
 
 
 // ✅ Component to switch ticker based on route
-function TickerSwitcher() {
+function TickerSwitcher({ showVideo }) {
   const location = useLocation();
 
   
 
   // default: home ticker
-  return <NewsTicker />;
+  return <NewsTicker showVideo={showVideo} />;
 }
 
 function App() {
+  const [showVideo, setShowVideo] = useState(false);
+  const [isDigitalSecurityActive, setIsDigitalSecurityActive] = useState(false);
+
+  const handleSecuritySwitch = () => {
+    setIsDigitalSecurityActive(prevState => !prevState);
+  };
   return (
     <Router>
-         <TickerSwitcher />
-      <NavBar />
+         <TickerSwitcher showVideo={showVideo} />
+      <NavBar showVideo={showVideo} setShowVideo={setShowVideo} isDigitalSecurityActive={isDigitalSecurityActive} handleSecuritySwitch={handleSecuritySwitch} />
 
     
    
@@ -42,9 +51,9 @@ function App() {
           path="/"
           element={
             <>
-              <HeroSection />
+              {isDigitalSecurityActive ? <DigitalHeroSection /> : <HeroSection />}
               <WhyChooseUs />
-              <Service />
+              {isDigitalSecurityActive ? <DigitalServices /> : <PhysicalService />}
               <TestCard />
               <Footer />
             </>
@@ -55,17 +64,17 @@ function App() {
         <Route
           path="/about"
           element={
-            <>
+            <div className="pt-24">
               <AboutHeader />
               <Footer />
-            </>
+            </div>
           }
           
         />
         <Route
           path='/services'
           element ={
-            <div className="container mx-auto overflow-hidden flex justify-center">
+            <div className="container mx-auto overflow-hidden flex justify-center pt-24">
               <ServiceSlider />
               <Footer />
             </div>
@@ -74,37 +83,37 @@ function App() {
        <Route
        path='/physical-security'
        element ={
-        <>
+        <div className="pt-24">
         <PhyscialSlider/>
         <Footer />
-        </>
+        </div>
        }
       />
         <Route
        path='/digital-security'
        element ={
-        <>
+        <div className="pt-24">
         <DigitalSlider/>
         <Footer />
-        </>
+        </div>
        }
       />
        <Route
        path='/contact'
        element ={
-        <>
+        <div className="pt-24">
         <ContactForm/>
         <Footer />
-        </>
+        </div>
        }
       />
          <Route
        path='/career'
        element ={
-        <>
+        <div className="pt-24">
         <CareerPage/>
         <Footer />
-        </>
+        </div>
        }
       />
       </Routes>

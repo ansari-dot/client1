@@ -1,7 +1,8 @@
 import React from "react";
 import { FaFingerprint } from "react-icons/fa";
 import { motion } from "framer-motion";
-
+import img1 from '../assets/bg1.jpg';
+import img2 from '../assets/bg3.png';
 const CareerPage = () => {
   return (
     <>
@@ -28,7 +29,7 @@ const CareerPage = () => {
 
       {/* Contact Section */}
       <motion.div
-        className="w-full bg-white py-24 px-6 md:px-16" style={{ backgroundImage: `url('/assets/Images/review.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        className="w-full bg-white py-24 px-6 md:px-16" style={{ backgroundImage: `url(${img2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeOut" }}
