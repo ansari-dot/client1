@@ -259,16 +259,10 @@ const AboutHeader = () => {
           </div> */}
         </motion.section>
 
-        {/* Team Section - Enhanced scroll animation, no once */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ amount: 0.3 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-        >
+        {/* Team Section */}
+        <div>
           <TeamCard />
-        </motion.div>
+        </div>
 
         {/* Contact Section - Uncommented and enhanced with scroll animation */}
        {/* <motion.section

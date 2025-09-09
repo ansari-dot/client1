@@ -22,14 +22,22 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
   // ✅ Digital route flag
   const isDigital = location.pathname === "/digital-security";
 
+  const isSpecialPage = [
+    "/about",
+    "/digital-security",
+    "/physical-security",
+    "/career",
+    "/contact",
+  ].includes(location.pathname);
+
   return (
     <>
       {/* Navbar */}
       <nav
-        className={`fixed top-8 left-0 right-0 z-50 flex items-center justify-center px-6 py-2 whitespace-nowrap transition-all duration-300 h-[100px] ${
-          isScrolled
+        className={`fixed top-8 left-0 right-0 z-50 flex items-center justify-center px-6 py-2 whitespace-nowrap transition-all duration-300 h-[80px] ${
+          isScrolled || isSpecialPage
             ? "bg-white border-b border-gray-200"
-            : "backdrop-blur-md bg-white/10 border-b border-white/20"
+            : "backdrop-blur-md bg-white/10 border-b border-white/20 "
         }`}>
         {/* Logo - positioned absolutely to the left */}
         <div className="absolute left-6 flex items-center">
@@ -37,7 +45,7 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
             <img
               src={logo}
               alt="Shehrity Logo"
-              className="h-16 w-auto transition-transform duration-300 hover:scale-110 hover:opacity-90"
+              className="h-12 w-auto transition-transform duration-300 hover:scale-110 hover:opacity-90"
             />
           </Link>
         </div>
@@ -106,7 +114,7 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
             className={`hidden md:block absolute right-6 px-6 py-2.5 font-medium rounded-full transition-all duration-300 ${
               isScrolled
                 ? "bg-[#15487d] text-white hover:bg-[#0f3a63]"
-                : "bg-white text-[#15487d] hover:bg-gray-100"
+                : "bg-[#15487d] text-white hover:bg-[#0f3a63]"
             }`}
             style={{ borderRadius: "9999px" }}>
             Switch to Digital Security
