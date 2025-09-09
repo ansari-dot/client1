@@ -9,7 +9,7 @@ const DigitalSlider = () => {
       {/* Hero Section with Background */}
       <div
         className="relative w-full h-[90vh] bg-cover bg-center flex items-center justify-center text-center text-white"
-        style={{ backgroundImage: `url(${img1})` }}>
+        style={{ backgroundImage: `url(${img1}})` }}>
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
 

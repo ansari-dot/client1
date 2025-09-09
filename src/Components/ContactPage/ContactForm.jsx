@@ -1,143 +1,263 @@
 import React from "react";
 import { FaFingerprint } from "react-icons/fa";
 import { motion } from "framer-motion";
-import img1 from '../assets/bg1.jpg';
 import img2 from '../assets/bg2.jpg';
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+
+const heroTextVariants = {
+  hidden: { opacity: 0, y: -20, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { 
+      duration: 0.8, 
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
+const fingerprintVariants = {
+  animate: {
+    y: [0, -15, 0],
+    rotate: [0, 5, -5, 0],
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const ContactForm = () => {
   return (
     <>
       {/* Top Fingerprint Banner */}
-      <div className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[500px] flex items-center justify-center bg-gray-400 overflow-hidden mt-10">
+      <motion.div
+        className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[500px] flex items-center justify-center bg-gradient-to-r from-gray-900 to-gray-700 overflow-hidden mt-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+      >
         {/* Fingerprint Icon with infinite animation */}
         <motion.div
-          animate={{ y: [0, -13, 0] }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          variants={fingerprintVariants}
+          animate="animate"
           className="absolute"
         >
-          <FaFingerprint className="text-white text-[120px] sm:text-[180px] md:text-[220px] lg:text-[280px] opacity-80" />
+          <FaFingerprint className="text-gray-300 text-[120px] sm:text-[180px] md:text-[220px] lg:text-[280px] opacity-70 drop-shadow-lg" />
         </motion.div>
 
-        {/* Centered Text */}
-        <h1 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black drop-shadow-lg">
-          Contact Us
-        </h1>
-      </div>
+        {/* Centered Text - Enhanced for visibility and professionalism */}
+        <motion.h1
+          className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-2xl tracking-tight"
+          style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800 }}
+          variants={heroTextVariants}
+        >
+          Get in Touch
+        </motion.h1>
+      </motion.div>
 
       {/* Contact Section */}
       <motion.div
-        className="w-full py-24 px-6 md:px-16"
+        className="w-full py-24 px-6 md:px-16 bg-gray-100/95"
         style={{
           backgroundImage: `url(${img2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        viewport={{ once: true }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left Side - Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2, delay: 0.2 }}
-            viewport={{ once: true }}
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
+            className="space-y-6"
           >
-            <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
+            <motion.h2
+              className="text-3xl font-semibold mb-4 text-black drop-shadow-md"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+              variants={childVariants}
+            >
+              Contact Information
+            </motion.h2>
 
             <div className="space-y-4">
               {/* Contact Us */}
-              <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm">
-                <div className="text-blue-500 text-xl">📞</div>
+              <motion.div
+                className="flex items-center gap-4 bg-white/95 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                variants={childVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-gray-900 text-xl">📞</div>
                 <div>
-                  <h3 className="font-semibold text-lg">Contact Us</h3>
-                  <p className="text-gray-600 text-sm">+1 (844) 388-0988</p>
+                  <h3 className="font-semibold text-lg text-black" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+                    Contact Us
+                  </h3>
+                  <p className="text-black text-sm" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                    +1 (844) 388-0988
+                  </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Send Mail */}
-              <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm">
-                <div className="text-blue-500 text-xl">📧</div>
+              <motion.div
+                className="flex items-center gap-4 bg-white/95 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                variants={childVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-gray-900 text-xl">📧</div>
                 <div>
-                  <h3 className="font-semibold text-lg">Send Us a Mail</h3>
-                  <p className="text-gray-600 text-sm">info@shehrity.com</p>
+                  <h3 className="font-semibold text-lg text-black" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+                    Send Us a Mail
+                  </h3>
+                  <p className="text-black text-sm" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                    info@shehrity.com
+                  </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Office Location */}
-              <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm">
-                <div className="text-blue-500 text-xl">📍</div>
+              <motion.div
+                className="flex items-center gap-4 bg-white/95 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                variants={childVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div className="text-gray-900 text-xl">📍</div>
                 <div>
-                  <h3 className="font-semibold text-lg">Office Location</h3>
-                  <p className="text-gray-600 text-sm">Columbus, Ohio</p>
+                  <h3 className="font-semibold text-lg text-black" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
+                    Office Location
+                  </h3>
+                  <p className="text-black text-sm" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                    Columbus, Ohio
+                  </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
           {/* Right Side - Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-xl p-8 shadow-xl"
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
+            className="bg-white/95 rounded-xl p-8 shadow-xl"
           >
             <form className="space-y-4">
               {/* Name fields */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-3"
+                variants={childVariants}
+              >
+                <motion.input
                   type="text"
                   placeholder="First Name*"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 transition-all duration-300"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
                 />
-                <input
+                <motion.input
                   type="text"
                   placeholder="Last Name*"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 transition-all duration-300"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
                 />
-              </div>
+              </motion.div>
 
               {/* Email & Phone */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                variants={childVariants}
+              >
+                <motion.input
                   type="email"
                   placeholder="Email*"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 transition-all duration-300"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
                 />
-                <input
+                <motion.input
                   type="tel"
                   placeholder="Phone*"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 transition-all duration-300"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
                 />
-              </div>
+              </motion.div>
 
               {/* Subject */}
-              <input
+              <motion.input
                 type="text"
                 placeholder="Subject*"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 transition-all duration-300"
+                whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
               />
 
               {/* Message */}
-              <textarea
+              <motion.textarea
                 rows="5"
                 placeholder="Message*"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800 resize-none"
-              ></textarea>
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:outline-none text-black bg-white/90 resize-none transition-all duration-300"
+                whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              ></motion.textarea>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
-                className="w-full md:w-auto bg-[#15487d] hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1"
+                className="w-full md:w-auto bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition duration-300 ease-in-out"
+                whileHover={{ scale: 1.05, boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
               >
                 Send Message →
-              </button>
+              </motion.button>
             </form>
           </motion.div>
         </div>

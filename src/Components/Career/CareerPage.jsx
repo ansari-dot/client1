@@ -3,143 +3,258 @@ import { FaFingerprint } from "react-icons/fa";
 import { motion } from "framer-motion";
 import img1 from '../assets/bg1.jpg';
 import img2 from '../assets/bg3.png';
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+
+const heroTextVariants = {
+  hidden: { opacity: 0, y: -20, scale: 0.9 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { 
+      duration: 0.8, 
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
+const fingerprintVariants = {
+  animate: {
+    y: [0, -15, 0],
+    rotate: [0, 5, -5, 0],
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const CareerPage = () => {
   return (
     <>
-      {/* Top Fingerprint Banner */}
-      <div className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[500px] flex items-center justify-center bg-gray-400 overflow-hidden mt-10">
+      {/* Top Fingerprint Banner - Enhanced hero section */}
+      <motion.div
+        className="relative w-full h-[190px] sm:h-[220px] md:h-[260px] lg:h-[500px] flex items-center justify-center bg-gray-400 overflow-hidden mt-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+      >
         {/* Fingerprint Icon with infinite animation */}
         <motion.div
-          animate={{ y: [0, -13, 0] }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          variants={fingerprintVariants}
+          animate="animate"
           className="absolute"
         >
-          <FaFingerprint className="text-white text-[120px] sm:text-[180px] md:text-[220px] lg:text-[280px] opacity-80" />
+          <FaFingerprint className="text-white text-[120px] sm:text-[180px] md:text-[220px] lg:text-[280px] opacity-80 drop-shadow-lg" />
         </motion.div>
 
-        {/* Centered Text */}
-        <h1 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black drop-shadow-lg">
-          Carreers
-        </h1>
-      </div>
+        {/* Centered Text - Enhanced for professionalism and visibility */}
+        <motion.h1
+          className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-2xl tracking-tight"
+          style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800 }}
+          variants={heroTextVariants}
+        >
+          Careers
+        </motion.h1>
+      </motion.div>
 
-      {/* Contact Section */}
+      {/* Career Section - Unchanged design with added animations */}
       <motion.div
-        className="w-full bg-white py-24 px-6 md:px-16" style={{ backgroundImage: `url(${img2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        viewport={{ once: true }}
+        className="w-full bg-white py-24 px-6 md:px-16"
+        style={{ backgroundImage: `url(${img2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
       >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Left Side - Contact Info */}
+          {/* Left Side - Career Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2, delay: 0.2 }}
-            viewport={{ once: true }}
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
           >
-            <h2 className="text-3xl font-bold mb-4">Join Our Team</h2>
+            <motion.h2
+              className="text-3xl font-bold mb-4"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+              variants={childVariants}
+            >
+              Join Our Team
+            </motion.h2>
 
             <div className="space-y-4">
-          
-              <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm text-sm">
-                <p>
-                At Shehrity, we believe that our people are our greatest asset. We are a dynamic and
-                 innovative company at the forefront of software development and artificial intelligence, and we are always looking for talented, driven individuals to join our team. If you're passionate about technology and want to be part of a company that values creativity,
-                 collaboration, and professional growth, Shehrity could be the perfect place for you.
-             
+              <motion.div
+                className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm text-sm"
+                variants={childVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                  At Shehrity, we believe that our people are our greatest asset. We are a dynamic and
+                  innovative company at the forefront of software development and artificial intelligence, and we are always looking for talented, driven individuals to join our team. If you're passionate about technology and want to be part of a company that values creativity,
+                  collaboration, and professional growth, Shehrity could be the perfect place for you.
                 </p>
-              </div>
+              </motion.div>
 
-               <h2 className="text-3xl font-bold mb-4">How to Apply</h2>
-              <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm text-sm">
-              
-                <p>
-                    Applying is simple! Explore our open positions, upload your resume, and share why you’d be a great fit for Shehrity Security Services. We carefully review all applications and will reach out if your skills and experience align with our needs. At Shehrity, your career is more than just a job—it’s a path to growth, excellence, and making a real impact. Join us and be part of a team dedicated to security, 
-                    innovation, and protecting what matters most.
+              <motion.h2
+                className="text-3xl font-bold mb-4"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+                variants={childVariants}
+              >
+                How to Apply
+              </motion.h2>
+              <motion.div
+                className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm text-sm"
+                variants={childVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                  Applying is simple! Explore our open positions, upload your resume, and share why you’d be a great fit for Shehrity Security Services. We carefully review all applications and will reach out if your skills and experience align with our needs. At Shehrity, your career is more than just a job—it’s a path to growth, excellence, and making a real impact. Join us and be part of a team dedicated to security, 
+                  innovation, and protecting what matters most.
                 </p>
-              </div>
-
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Right Side - Contact Form */}
+          {/* Right Side - Application Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.3 }}
             className="bg-white rounded-xl p-8 shadow-xl"
           >
-         <form className="space-y-4">
-  {/* Name fields */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-    <input
-      type="text"
-      placeholder="First Name*"
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-    />
-    <input
-      type="text"
-      placeholder="Last Name*"
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-    />
-  </div>
+            <form className="space-y-4">
+              {/* Name fields */}
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-3"
+                variants={childVariants}
+              >
+                <motion.input
+                  type="text"
+                  placeholder="First Name*"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+                />
+                <motion.input
+                  type="text"
+                  placeholder="Last Name*"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+                />
+              </motion.div>
 
-  {/* Email & Phone */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <input
-      type="email"
-      placeholder="Email*"
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-    />
-    <input
-      type="tel"
-      placeholder="Phone*"
-      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-    />
-  </div>
+              {/* Email & Phone */}
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                variants={childVariants}
+              >
+                <motion.input
+                  type="email"
+                  placeholder="Email*"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+                />
+                <motion.input
+                  type="tel"
+                  placeholder="Phone*"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+                />
+              </motion.div>
 
-  {/* Subject */}
-  <input
-    type="text"
-    placeholder="Subject*"
-    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-  />
+              {/* Subject */}
+              <motion.input
+                type="text"
+                placeholder="Subject*"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              />
 
-  {/* Message */}
-  <textarea
-    rows="5"
-    placeholder="Message*"
-    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800 resize-none"
-  ></textarea>
+              {/* Message */}
+              <motion.textarea
+                rows="5"
+                placeholder="Message*"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800 resize-none"
+                whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              ></motion.textarea>
 
-  {/* Resume / Photo Upload */}
-  <div>
-    <label className="block text-gray-700 font-medium mb-2">
-      Upload Your Resume / Photo
-    </label>
-    <input
-      type="file"
-      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
-      className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
-    />
-  </div>
+              {/* Resume / Photo Upload */}
+              <motion.div
+                className="space-y-2"
+                variants={childVariants}
+              >
+                <label
+                  className="block text-gray-700 font-medium"
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
+                >
+                  Upload Your Resume / Photo
+                </label>
+                <motion.input
+                  type="file"
+                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-900 focus:outline-none text-gray-800"
+                  whileFocus={{ borderColor: '#1f2937', scale: 1.01 }}
+                  variants={childVariants}
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+                />
+              </motion.div>
 
-  {/* Submit Button */}
-  <button
-    type="submit"
-    className="w-full md:w-auto bg-[#15487d] hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1"
-  >
-    Send Message →
-  </button>
-</form>
-
+              {/* Submit Button */}
+              <motion.button
+                type="submit"
+                className="w-full md:w-auto bg-[#15487d] hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition duration-300 ease-in-out"
+                whileHover={{ scale: 1.05, boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                variants={childVariants}
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
+              >
+                Send Message →
+              </motion.button>
+            </form>
           </motion.div>
         </div>
       </motion.div>
