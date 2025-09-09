@@ -57,17 +57,17 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
                     </button>
                     {servicesDropdown && (
                       <div
-                        className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-md border border-gray-200 py-2 z-50"
+                        className="absolute top-[90%] left-0 mt-0 w-48 bg-white shadow-lg rounded-md border border-gray-200 py-2 z-50"
                         onMouseEnter={() => setServicesDropdown(true)}
                         onMouseLeave={() => setServicesDropdown(false)}>
                         <Link
                           to="/physical-security"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors">
+                          className="relative py-3 hover:after:w-full !no-underline after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300 text-black after:bg-black block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors">
                           Physical Security
                         </Link>
                         <Link
                           to="/digital-security"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors">
+                          className="relative py-3 hover:after:w-full !no-underline after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300 text-black after:bg-black block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors">
                           Digital Security
                         </Link>
                       </div>
@@ -138,8 +138,8 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
           {["Home", "About", "Contact", "Career"].map((item, idx) => (
             <li key={idx}>
               <Link
-                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                className="block text-gray-800 hover:text-[#15487d] transition text-lg py-2"
+                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  className="relative py-3 hover:after:w-full !no-underline after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300 text-black after:bg-black block text-gray-800 hover:text-[#15487d] transition text-lg py-2"
                 onClick={() => setMenuOpen(false)}>
                 {item}
               </Link>
@@ -153,13 +153,13 @@ const NavBar = ({ handleSecuritySwitch, isDigitalSecurityActive }) => {
               <div className="pl-4 space-y-2">
                 <Link
                   to="/physical-security"
-                  className="block py-2 text-gray-700 hover:text-[#15487d] transition-colors"
+                  className="relative py-3 hover:after:w-full !no-underline after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300 text-black after:bg-black block py-2 text-gray-700 hover:text-[#15487d] transition-colors"
                   onClick={() => setMenuOpen(false)}>
                   Physical Security
                 </Link>
                 <Link
                   to="/digital-security"
-                  className="block py-2 text-gray-700 hover:text-[#15487d] transition-colors"
+                  className="relative py-3 hover:after:w-full !no-underline after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-1 after:transition-all after:duration-300 text-black after:bg-black block py-2 text-gray-700 hover:text-[#15487d] transition-colors"
                   onClick={() => setMenuOpen(false)}>
                   Digital Security
                 </Link>

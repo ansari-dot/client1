@@ -10,7 +10,7 @@ const NewsTicker = ({ showVideo }) => {
 
   return (
     <div
-      className={`ticker-container text-white py-2 bg-[#15487d] ${showVideo ? "hidden" : ""}`}
+      className="ticker-container text-white py-2 bg-[#15487d]"
     >
       <div className="ticker-content">
         <span>
